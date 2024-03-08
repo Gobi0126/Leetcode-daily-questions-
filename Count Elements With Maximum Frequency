@@ -1,0 +1,22 @@
+class Solution {
+    public int maxFrequencyElements(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        for(int i : nums) {
+            if(i > max) max = i;
+        }
+
+        int[] index = new int[max + 1];
+        for(int i : nums) index[i]++;
+
+        int freq = 0;
+        for(int i : index) {
+            if(i > freq) freq = i;
+        }
+
+        int ans = 0;
+        for(int i : index) {
+            if(freq == i) ans+=i;
+        }
+        return ans;
+    }
+}

@@ -1,0 +1,16 @@
+class Solution {
+    public String customSortString(String order, String s) {
+        StringBuilder t = new StringBuilder();
+        int a[] = new int[26];
+        for(char c : s.toCharArray()) {
+           a[c-'a']++;
+        }
+        for(char c : order.toCharArray()) {
+            while(a[c-'a']-- > 0) t.append(c);
+        }
+        for(char c : s.toCharArray()) {
+           while(a[c - 'a']-- > 0) t.append(c);
+        }
+        return t.toString();
+    }
+}

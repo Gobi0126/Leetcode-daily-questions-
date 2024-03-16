@@ -1,0 +1,15 @@
+class Solution {
+    public int findMaxLength(int[] nums) {
+        int a[] = new int[2 * nums.length + 1];
+        Arrays.fill(a,-2);
+        a[nums.length] = -1;
+        int max = 0, count = 0;
+        for(int i = 0 ; i < nums.length ; i++) {
+            count += (nums[i] == 0 ? -1 : 1);
+            if(a[count + nums.length] >= -1) 
+                max = Math.max(max,i - a[count + nums.length]);
+            else a[count + nums.length] = i;
+        }
+        return max;
+    }
+}

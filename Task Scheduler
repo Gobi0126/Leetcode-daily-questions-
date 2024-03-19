@@ -1,0 +1,15 @@
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int a[] = new int[26];
+        int max = 0;
+        for(char s : tasks) {
+            a[s-'A']++;
+            max = Math.max(max,a[s-'A']);
+        }
+        int time = (max - 1) * (n + 1);
+        for(int i : a) {
+            if(i == max) time++;
+        }
+        return Math.max(tasks.length,time);  
+    }
+}

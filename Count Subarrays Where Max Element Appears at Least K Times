@@ -1,0 +1,19 @@
+class Solution {
+    public long countSubarrays(int[] nums, int k) {
+        int max = 0,l = 0,count = 0;
+        long ans = 0;
+        for(int i : nums) {
+            if(i > max) max = i;
+        }
+        
+        for(int i = 0 ; i < nums.length ; i++) {
+            if(nums[i] == max) count++;
+            while(count == k) {
+                if(nums[l] == max) count--;
+                l++;
+            }
+            ans += l;
+        }
+        return ans;
+    }
+}
